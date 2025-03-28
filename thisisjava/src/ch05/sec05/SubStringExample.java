@@ -9,5 +9,8 @@ public class SubStringExample {
 		
 		String secondNum = ssn.substring(7);
 		System.out.println(secondNum);
+		
+		int num = ssn.indexOf("34567");
+		System.out.println(num);
 	}
 }

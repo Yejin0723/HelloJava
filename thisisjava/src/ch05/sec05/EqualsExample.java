@@ -24,9 +24,11 @@ public class EqualsExample {
 			System.out.println("strVar3과 strVar4는 참조가 다름");
 		}
 		
-		if(strVar3.equals(strVar4)) {
+		if(strVar3.equals(strVar4)) {  //문자열 비교시에는 equals 필수!
 			System.out.println("strVar3과 strVar4는 문자열이  같음");
 		}		
+	
+		System.out.println(strVar1.hashcode());
 	}
 }
 
