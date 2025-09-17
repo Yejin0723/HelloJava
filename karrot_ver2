@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>당근웹페이지만들기</title>
+</head>
+<body>
+  <!-- 상단 -->
+  <header>
+    <div class="site-logo">
+      <a href="https://www.daangn.com/kr/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543" aria-label="당근마켓 홈">
+        <img src="logo.png" alt="당근마켓" loading="lazy" width="50" height="50">        
+      </a>
+    </div>
+
+    <nav aria-label="주요메뉴">
+      <ul>
+        <li><a href="https://www.daangn.com/kr/buy-sell/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">중고거래</a></li>
+
+
+        <li>
+        <details>
+            <summary>부동산</summary>
+          <ul>
+            <li><a href="https://www.daangn.com/kr/realty/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">부동산 검색</a></li>
+            <li><a href="https://realty.daangn.com/auth/login">중개사 서비스</a></li>
+            <li><a href="https://daangn.notion.site/be13356fa2764ec78ed9f76cbd71442a">중개사 이용 가이드</a></li>
+          </ul>
+        </details>
+        </li>
+
+
+        <li>
+        <details>
+            <summary>중고차</summary>  
+          <ul>
+            <li><a href="https://www.daangn.com/kr/cars/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">중고차 검색</a></li>
+            <li><a href="https://cardealer.daangn.com/login">딜러용 서비스</a></li>
+          </ul>
+        </details>
+        </li>
+
+
+        <li>
+        <details>
+            <summary>알바</summary>
+          <ul>
+            <li><a href="https://www.daangn.com/kr/jobs/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">알바 검색</a></li>
+            <li><a href="https://www.daangn.com/kr/jobs/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">당근알바 소개</a></li>
+            <li><a href="https://jobs-enterprise.daangn.com/">기업형 서비스</a></li>
+            <li><a href="https://jobs-trust.daangn.com/">신뢰와 안전</a></li>
+          </ul>
+          </details>
+          </li>
+
+        <li><a href="https://www.daangn.com/kr/local-profile/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">동네업체</a></li>
+        <li><a href="https://www.daangn.com/kr/community/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">동네생활</a></li>
+        <li><a href="https://www.daangn.com/kr/group/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">모임</a></li>
+      </ul>
+    </nav>
+
+    <!-- 검색영역 -->
+    <section class="search-area" aria-label="통합검색">
+      <form role="search" action="/search" method="get">  <!-- 데이터를 보낼 파라미터 값 필요 -->
+        <label for="category">카테고리</label>
+        <select id="category" name="category">
+          <option value="trade">중고거래</option>
+          <option value="realestate">부동산</option>
+          <option value="car">중고차</option>
+          <option value="parttime">알바</option>
+          <option value="localbusiness">동네업체</option>
+          <option value="community">동네생활</option>
+          <option value="gathering">모임</option>
+        </select>
+
+        <label for="q">검색어</label>
+        <input type="search" id="q" name="q" placeholder="검색어를 입력해주세요" required>
+        <button type="submit">검색</button>
+      </form>
+
+      <!-- 인기검색어 -->
+      <nav class="popular-searches" aria-label="인기 검색어">
+        <h2 class="sr-only">인기 검색어</h2>
+        <ul>
+          <li><a href="#">에어컨</a></li>
+          <li><a href="#">에어팟</a></li>
+          <li><a href="#">자전거</a></li>
+          <li><a href="#">굿즈</a></li>
+          <li><a href="#">다이슨</a></li>
+        </ul>
+      </nav>
+    </section>
+  </header>
+
+  <!-- 메인 -->
+  <main>
+    <!-- 브레드크럼 다시 한번 검토-->
+    <nav aria-label="breadcrumb">
+      <ol>
+        <li><a href="https://www.daangn.com/kr/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">홈</a></li>
+        <li aria-current="page"><span>중고거래</span></li>
+      </ol>
+    </nav>
+
+    <header>
+      <h1>경기도 수원시 장안구 정자동 중고거래</h1> <!-- 동네명 동적으로 바뀌어야 함. -->
+    </header>
+
+    <div class="layout">
+      <!-- 좌측: 필터 -->
+      <aside aria-labelledby="filters-heading">
+        <h2 id="filters-heading">필터</h2>
+
+        <form action="" method="get">
+          <fieldset>
+            <legend>거래 가능 여부</legend>
+            <label>
+              <input type="checkbox" name="available" value="1"> 거래 가능한 상품만 보기
+            </label>
+          </fieldset>
+
+
+          <!--더보기 버튼 js 붙여야 함.-->
+          <fieldset>
+            <legend>위치</legend>
+            <p>경기도 수원시 장안구</p>
+            <label><input type="radio" name="dong" value="jeongja">정자동</label>
+            <label><input type="radio" name="dong" value="cheoncheon">천천동</label>
+            <label><input type="radio" name="dong" value="jeongja2">정자2동</label>
+            <label><input type="radio" name="dong" value="jeongja3">정자3동</label>
+            <label><input type="radio" name="dong" value="yuljeon">율전동</label>
+            <label><input type="radio" name="dong" value="yeongwha">영화동</label>
+
+            <div id="more-locations-panel" hidden>
+              <label><input type="radio" name="dong" value="jowon">조원동</label>
+              <label><input type="radio" name="dong" value="songjook">송죽동</label>
+              <label><input type="radio" name="dong" value="yeonmu">연무동</label>
+              <label><input type="radio" name="dong" value="pajang">파장동</label>
+              <label><input type="radio" name="dong" value="yulcheon">율천동</label>
+              <label><input type="radio" name="dong" value="jowon1">조원1동</label>
+              <label><input type="radio" name="dong" value="jowon2">조원2동</label>
+              <label><input type="radio" name="dong" value="emok">이목동</label>
+              <label><input type="radio" name="dong" value="hakwangkyu">하광교동</label>
+              <label><input type="radio" name="dong" value="sangkwangkyu">상광교동</label>
+            </div>
+            <button type="button" id="btn-more-locations" aria-expanded="false" aria-controls="more-locations-panel">더보기</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>카테고리</legend>
+            <label><input type="radio" name="menu" value="Digital">디지털기기</label>
+            <label><input type="radio" name="menu" value="Appliance">생활가전</label>
+            <label><input type="radio" name="menu" value="Furniture">가구/인테리어</label>
+            <label><input type="radio" name="menu" value="Kitchen">생활/주방</label>
+            <label><input type="radio" name="menu" value="Kids">유아동</label>
+            <label><input type="radio" name="menu" value="KidsBooks">유아도서</label>
+            <label><input type="radio" name="menu" value="WomenClothes">여성의류</label>
+            <label><input type="radio" name="menu" value="WomenGoods">여성잡화</label>
+            <label><input type="radio" name="menu" value="MenClothes">남성패션/잡화</label>
+            <label><input type="radio" name="menu" value="Beauty">뷰티/미용</label>
+            <label><input type="radio" name="menu" value="Sports">스포츠/레저</label>
+            <label><input type="radio" name="menu" value="Leisure">취미/게임/음반</label>
+            <label><input type="radio" name="menu" value="Books">도서</label>
+            <label><input type="radio" name="menu" value="Tickets">티켓/교환권</label>
+            <label><input type="radio" name="menu" value="ProcessedFood">가공식품</label>
+            <label><input type="radio" name="menu" value="HealthFunctionalFood">건강기능식품</label>
+            <label><input type="radio" name="menu" value="Pets">반려동물용품</label>
+            <label><input type="radio" name="menu" value="Plants">식물</label>
+            <label><input type="radio" name="menu" value="Etc">기타중고물품</label>
+            <label><input type="radio" name="menu" value="Buying">삽니다</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>가격</legend>
+            <div class="price-presets">
+              <label><input type="radio" name="price" value="free">나눔</label>
+              <label><input type="radio" name="price" value="lte-5000">5,000원 이하</label>
+              <label><input type="radio" name="price" value="lte-10000">10,000원 이하</label>
+              <label><input type="radio" name="price" value="lte-20000">20,000원 이하</label>
+            </div>
+
+            <div class="price-range">
+              <label for="price-min">최소가격</label>
+              <input type="number" id="price-min" name="price-min" placeholder="최소가격">
+              <span>~</span>
+              <label for="price-max">최대가격</label>
+              <input type="number" id="price-max" name="price-max" placeholder="최대가격">
+              <span>원</span>
+              <button type="button" id="btn-price-range">적용하기</button>
+            </div>
+          </fieldset>
+        </form>
+      </aside>
+
+      <!-- 우측: 상품 목록 -->
+      <!--추후 js 붙여야함-->
+      <section class="product-list" aria-labelledby="product-list-title">
+        <h2 id="product-list-title" class="sr-only">중고거래 상품 목록</h2>
+        <ul class="products">
+          <li>
+            <article class="product">
+              <a href="#">
+                <figure>
+                  <img src="product1.jpg" alt="화이트 4구 스포트라이트 직부등" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">화이트 4구 스포트라이트 직부등</h3>
+                <p class="product-price"><data value="15000">15,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T14:00:00+09:00">6분 전</time></p>
+              </a>
+            </article>
+          </li>
+
+          <li>
+            <article class="product">
+              <a href="#">
+                <figure>
+                  <img src="product2.jpg" alt="브이넥니트" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">브이넥니트</h3>
+                <p class="product-price"><data value="20000">20,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T14:00:00+09:00">7분 전</time></p>
+              </a>
+            </article>
+          </li>
+
+          <li>
+            <article class="product">
+              <a href="#">
+                <figure>
+                  <img src="product3.jpg" alt="나이키아기운동화" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">나이키아기운동화</h3>
+                <p class="product-price"><data value="20000">20,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T14:00:00+09:00">3시간 전</time></p>
+              </a>
+            </article>
+          </li>
+
+          <li>
+            <article class="product">
+              <a href="#">
+                <figure>
+                  <img src="product4.jpg" alt="크라이베이비" loading="lazy" width="300" height="300">
+                 </figure>
+                <h3 class="product-title">크라이베이비</h3>
+                <p class="product-price"><data value="40000">40,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T14:00:00+09:00">3시간 전</time></p>
+              </a>
+            </article>
+          </li>
+
+            <li>
+                <article class="product">
+                <a href="#">
+                    <figure>
+                    <img src="product5.jpg" alt="아이폰13미니" loading="lazy" width="300" height="300">
+                    </figure>
+                    <h3 class="product-title">아이폰13미니</h3>
+                    <p class="product-price"><data value="350000">350,000원</data></p>
+                    <p class="product-location">경기 수원시 장안구 정자동</p>
+                    <p class="product-time"><time datetime="2025-09-16T14:00:00+09:00">5시간 전</time></p>  
+                </a>
+                </article>
+            </li>
+
+            <li>
+                <article class="product">
+                <a href="#">
+                    <figure>
+                    <img src="product6.jpg" alt="에어팟프로2세대" loading="lazy" width="300" height="300">
+                    </figure>
+                    <h3 class="product-title">에어팟프로2세대</h3>
+                    <p class="product-price"><data value="250000">250,000원</data></p>
+                    <p class="product-location">경기 수원시 장안구 정자동</p>
+                    <p class="product-time"><time datetime="2025-09-16T14:00:00+09:00">1일 전</time></p>
+                </a>
+                </article>
+            </li>
+
+            <li>
+                <article class="product">
+                <a href="#">
+                    <figure>
+                    <img src="product7.jpg" alt="아이폰12미니" loading="lazy" width="300" height="300">
+                    </figure>
+                    <h3 class="product-title">아이폰12미니</h3>
+                    <p class="product-price"><data value="200000">200,000원</data></p>
+                    <p class="product-location">경기 수원시 장안구 정자동</p>
+                    <p class="product-time"><time datetime="2025-09-16T14:00:00+09:00">2일 전</time></p>
+                </a>
+                </article>
+            </li>
+
+            <li>
+                <article class="product">
+                <a href="#">
+                    <figure>
+                    <img src="product8.jpg" alt="아이폰11" loading="lazy" width="300" height="300">
+                    </figure>
+                    <h3 class="product-title">아이폰11</h3>
+                    <p class="product-price"><data value="150000">150,000원</data></p>
+                    <p class="product-location">경기 수원시 장안구 정자동</p>
+                    <p class="product-time"><time datetime="2025-09-16T14:00:00+09:00">3일 전</time></p>
+                </a>
+             </article>
+            </li>
+
+            <li>
+                 <article class="product">
+                <a href="#">
+                 <figure>
+                 <img src="product9.jpg" alt="아이폰 14 프로 맥스" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">아이폰 14 프로 맥스</h3>
+                <p class="product-price"><data value="1350000">1,350,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T09:30:00+09:00">5분 전</time></p>
+                </a>
+            </article>
+            </li>
+
+            <li>
+            <article class="product">
+                <a href="#">
+                <figure>
+                    <img src="product10.jpg" alt="삼성 QLED 65인치 TV" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">삼성 QLED 65인치 TV</h3>
+                <p class="product-price"><data value="750000">750,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T08:15:00+09:00">20분 전</time></p>
+                </a>
+            </article>
+            </li>
+
+            <li>
+            <article class="product">
+                <a href="#">
+                <figure>
+                    <img src="product11.jpg" alt="닌텐도 스위치 OLED" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">닌텐도 스위치 OLED</h3>
+                <p class="product-price"><data value="280000">280,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T07:50:00+09:00">30분 전</time></p>
+                </a>
+            </article>
+            </li>
+
+            <li>
+            <article class="product">
+                <a href="#">
+                <figure>
+                    <img src="product12.jpg" alt="에어팟 프로 2세대" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">에어팟 프로 2세대</h3>
+                <p class="product-price"><data value="210000">210,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T07:00:00+09:00">1시간 전</time></p>
+                </a>
+            </article>
+            </li>
+
+            <li>
+            <article class="product">
+                <a href="#">
+                <figure>
+                    <img src="product13.jpg" alt="다이슨 무선 청소기 V15" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">다이슨 무선 청소기 V15</h3>
+                <p class="product-price"><data value="620000">620,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T06:30:00+09:00">1시간 전</time></p>
+                </a>
+            </article>
+            </li>
+
+            <li>
+            <article class="product">
+                <a href="#">
+                <figure>
+                    <img src="product14.jpg" alt="캠핑 폴딩체어 세트" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">캠핑 폴딩체어 세트</h3>
+                <p class="product-price"><data value="55000">55,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T06:00:00+09:00">2시간 전</time></p>
+                </a>
+            </article>
+            </li>
+
+            <li>
+            <article class="product">
+                <a href="#">
+                <figure>
+                    <img src="product15.jpg" alt="샤넬 클래식 플랩백" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">샤넬 클래식 플랩백</h3>
+                <p class="product-price"><data value="6500000">6,500,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T05:20:00+09:00">2시간 전</time></p>
+                </a>
+            </article>
+            </li>
+
+            <li>
+            <article class="product">
+                <a href="#">
+                <figure>
+                    <img src="product16.jpg" alt="아이맥 24인치 M1" loading="lazy" width="300" height="300">
+                </figure>
+                <h3 class="product-title">아이맥 24인치 M1</h3>
+                <p class="product-price"><data value="1100000">1,100,000원</data></p>
+                <p class="product-location">경기 수원시 장안구 정자동</p>
+                <p class="product-time"><time datetime="2025-09-16T04:50:00+09:00">3시간 전</time></p>
+                </a>
+            </article>
+            </li>
+        </ul>
+      </section>
+
+      <!-- 메인 하단 배너 -->
+
+    <section class ="app-banner" aria-label="앱 다운로드">
+      <div class="app-banner_inner">
+        
+        <div class="app-banner_copy">
+          <p class="headline">당근에서 가까운 이웃과 함께해요.</p>
+          <p>지금 바로 다운로드하기</p>
+
+          <ul class="store-links">
+            <li>
+              <a class="btn-store" href="" aria-label="구글 플레이에서 다운로드">
+                <img src="googleplay.svg" alt=""  loading="lazy" width="150" height="50">
+              </a>
+            </li>
+            <li>
+              <a class="btn-store" href="" aria-label="앱스토어에서 다운로드">
+                <img src="appstore.svg" alt="" loading="lazy" width="150" height="50">
+              </a>
+            </li>
+          </ul>
+          </div>
+
+          <div class="app-banner_visual" aria-hidden="true"></div>
+          </div>
+
+        <div class="karrot-banner">
+          <img src="karrot.png" alt="Karrot - The local community app" loading="lazy">
+          </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 하단 -->
+  <footer>
+    <!-- 왼쪽: 브랜드/소셜 -->
+    <section class="footer-brand" aria-labelledby="footer-brand-title">
+      <h2 id="footer-brand-title" class="sr-only">당근마켓 브랜드</h2>
+      <div class="brand-logos">
+        <a href="#"><img src="logo.png" alt="당근마켓 로고" loading="lazy" width="50" height="50"></a>
+      </div>
+      
+          <div class="social-links">
+        <a href="https://facebook.com">
+          <img src="facebook.png" alt="페이스북 로고" loading="lazy" width="50" height="50">
+          <span class="sr-only">페이스북</span>
+        </a>
+        <a href="https://instagram.com">
+          <img src="instagram.png" alt="" role="presentation" loading="lazy" width="50" height="50">
+          <span class="sr-only">인스타그램</span>
+        </a>
+        <a href="https://youtube.com">
+          <img src="youtube.png" alt="" role="presentation" loading="lazy" width="50" height="50">
+          <span class="sr-only">유튜브</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 오른쪽: 링크/회사정보 -->
+    <section class="footer-links" aria-labelledby="footer-links-title">
+      <h2 id="footer-links-title" class="sr-only">푸터 메뉴</h2>
+      <nav aria-label="푸터메뉴">
+        <ul class="link-groups">
+          <li class="link-group">
+            <h3 class="group-title">회사</h3>
+            <ul>
+              <li><a href="https://about.daangn.com/">회사 소개</a></li>
+              <li><a href="https://www.daangnpay.com/">당근페이</a></li>
+              <li><a href="https://about.daangn.com/culture/">팀문화</a></li>
+              <li><a href="https://about.daangn.com/service/">서비스 소개</a></li>
+              <li><a href="https://about.daangn.com/blog/">블로그</a></li>
+              <li><a href="https://about.daangn.com/jobs/">채용</a></li>
+            </ul>
+          </li>
+          <li class="link-group">
+            <h3 class="group-title">탐색</h3>
+            <ul>
+              <li><a href="https://www.daangn.com/kr/buy-sell/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">중고거래</a></li>
+              <li><a href="https://www.daangn.com/kr/realty/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">부동산</a></li>
+              <li><a href="https://www.daangn.com/kr/cars/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">중고차</a></li>
+              <li><a href="https://www.daangn.com/kr/jobs/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">알바</a></li>
+              <li><a href="https://www.daangn.com/kr/local-profile/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">동네업체</a></li>
+              <li><a href="https://www.daangn.com/kr/community/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">동네생활</a></li>
+              <li><a href="https://www.daangn.com/kr/group/?in=%EC%A0%95%EC%9E%90%EB%8F%99-4543">모임</a></li>
+              <li><a href="https://chat.daangn.com/login">채팅하기</a></li>
+            </ul>
+          </li>
+          <li class="link-group">
+            <h3 class="group-title">비즈니스</h3>
+            <ul>
+              <li><a href="https://business.daangn.com/">당근 비즈니스</a></li>
+              <li><a href="#">제휴 문의</a></li>
+              <li><a href="#">광고 문의</a></li>
+            </ul>
+          </li>
+          <li class="link-group">
+            <h3 class="group-title">Karrot</h3>
+            <ul>
+              <li><a href="https://karrotmarket.com/ca/">Canada</a></li>
+              <li><a href="https://www.karrotmarket.com/?in=manhattan-7426">United States</a></li>
+              <li><a href="https://karrotmarket.com/uk/?in=city-of-london-3940">United Kingdom</a></li>
+              <li><a href="https://karrotmarket.com/jp/">日本</a></li>
+            </ul>
+          </li>
+          <li class="link-group">
+            <h3 class="group-title">문의</h3>
+            <ul>
+              <li><a href="#">IR</a></li>
+              <li><a href="#">PR</a></li>
+              <li><a href="https://daangn.com/wv/faqs">고객센터</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <section class="company-info" aria-labelledby="company-info-title">
+      <h2 id="company-info-title" class="sr-only">회사정보</h2>
+      <address>
+        <p>(주) 당근마켓</p>
+        <p>대표: 김용현, 황도연</p>
+        <p>사업자번호: 375-87-00088</p>
+        <p>통신판매업 신고번호: 2021-서울서초-2875</p>
+        <p>호스팅 사업자: Amazon Web Services (AWS)</p>
+        <p>주소: 서울특별시 구로구 디지털로 300, 10층 (당근서비스)</p>
+        <p>전화: <a href="tel:18779737">1877-9737</a></p>
+        <p>이메일: <a href="mailto:cs@daangnservice.com">cs@daangnservice.com</a></p>
+      </address>
+
+      <nav aria-label="약관 및 정책">
+        <ul>
+          <li><a href="https://www.daangn.com/policy/terms">이용약관</a></li>
+          <li><a href="https://privacy.daangn.com/">개인정보처리방침</a></li>
+          <li><a href="https://cs.kr.karrotmarket.com/wv/faqs/slug/operation_policy">운영정책</a></li>
+          <li><a href="https://www.daangn.com/policy/location">위치기반서비스 이용약관</a></li>
+          <li><a href="https://www.daangn.com/wv/faqs/3994">이용자보호 비전과 계획</a></li>
+          <li><a href="https://www.daangn.com/wv/faqs/9010">청소년보호정책</a></li>
+        </ul>
+      </nav>
+    </section>
+  </footer>
+</body>
+</html>
